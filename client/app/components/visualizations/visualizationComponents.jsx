@@ -9,6 +9,8 @@ import countriesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/cou
 import germanyStatesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/germany.states.geo.json";
 import usaDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/usa-albers.geo.json";
 import subdivJapanDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/japan.prefectures.geo.json";
+import usaCountiesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/usa.counties.geo.json";
+
 
 function wrapComponentWithSettings(WrappedComponent) {
   return function VisualizationComponent(props) {
@@ -28,7 +30,7 @@ function wrapComponentWithSettings(WrappedComponent) {
             iso_n3: "ISO code (3 digits)",
           },
         },
-		germany_states: {
+        germany_states: {
           name: "Germany/States",
           url: germanyStatesDataUrl,
           fieldNames: {
@@ -38,6 +40,15 @@ function wrapComponentWithSettings(WrappedComponent) {
             iso_a2: "ISO code (2 letters)",
             iso_a3: "ISO code (3 letters)",
             iso_n3: "ISO code (3 digits)",
+          },
+        },
+        usa_counties: {
+          name: "USA/Counties",
+          url: usaCountiesDataUrl,
+          fieldNames: {
+            name: "name",
+            countyFips: "County Fips (5 digits)",
+            affGeoId: "aff Geo Id"
           },
         },
         usa: {
