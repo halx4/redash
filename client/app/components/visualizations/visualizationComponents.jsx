@@ -10,6 +10,7 @@ import germanyStatesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps
 import usaDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/usa-albers.geo.json";
 import subdivJapanDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/japan.prefectures.geo.json";
 import usaCountiesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/usa.counties.geo.json";
+import ukPostcodesDataUrl from "@redash/viz/lib/visualizations/choropleth/maps/uk.postcodes.geo.json";
 
 
 function wrapComponentWithSettings(WrappedComponent) {
@@ -49,6 +50,13 @@ function wrapComponentWithSettings(WrappedComponent) {
             name: "name",
             countyFips: "County Fips (5 digits)",
             affGeoId: "aff Geo Id"
+          },
+        },
+        uk_postcodes: {
+          name: "UK/Postcodes",
+          url: ukPostcodesDataUrl,
+          fieldNames: {
+            name: "name"
           },
         },
         usa: {
