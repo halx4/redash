@@ -51,6 +51,7 @@ export default function useLoadGeoJson(mapType) {
         cache.release(mapUrl);
       };
     } else {
+      console.log("mapUrl is NOT string/ setting geojson=null")
       setGeoJson(null);
       setIsLoading(false);
     }
