@@ -1,4 +1,6 @@
 const LessPluginAutoPrefix = require("less-plugin-autoprefix");
+var webpack = require('webpack');
+
 const path = require("path");
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -15,6 +17,11 @@ module.exports = {
     symlinks: false,
     extensions: [".js", ".jsx"],
   },
+  plugins: [
+    new webpack.SourceMapDevToolPlugin({
+      filename: '[name].js.map'
+  })
+  ],
   module: {
     rules: [
       {
