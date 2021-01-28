@@ -130,7 +130,7 @@ export default function initChoropleth(container, onBoundsChange) {
     if (!isObject(geoJson) || !isArray(geoJson.features)) {
       _choropleth = null;
       _map.setMaxBounds(null);
-      console.log("returning MARK1")
+      console.log("returning initChoropleth:133")
       return;
     }
 
@@ -146,18 +146,31 @@ export default function initChoropleth(container, onBoundsChange) {
     console.log("added to L.geoJSON")
     console.log(geoJson)
 
+    console.log("_choropleth object:")
+    console.log(_choropleth)
+
     const mapBounds = _choropleth.getBounds();
+    console.log("mapBounds")
+    console.log(mapBounds)
+
     const bounds = validateBounds(options.bounds, mapBounds);
+    console.log("bounds validated")
+    console.log(bounds)
+    
     _map.fitBounds(bounds, { animate: false, duration: 0 });
+    console.log("bounds fitted")
 
     // equivalent to `_map.setMaxBounds(mapBounds)` but without animation
     _map.options.maxBounds = mapBounds;
     _map.panInsideBounds(mapBounds, { animate: false, duration: 0 });
+    console.log("panInsideBounds returned")
 
     // update legend
     if (options.legend.visible && legend.length > 0) {
+      console.log("in the legend if block")
       _legend.setPosition(options.legend.position.replace("-", ""));
       _map.addControl(_legend);
+      console.log("legend control added")
       ReactDOM.render(
         <Legend
           items={map(legend, item => ({ ...item, text: formatValue(item.limit) }))}
@@ -166,9 +179,11 @@ export default function initChoropleth(container, onBoundsChange) {
         _legend.getContainer()
       );
     }
+    console.log("update layers returning...")
   }
 
   function updateBounds(bounds) {
+    console.log("updateBounds() invoked")
     if (!boundsChangedFromMap) {
       const layerBounds = _choropleth ? _choropleth.getBounds() : _map.getBounds();
       bounds = validateBounds(bounds, layerBounds);
