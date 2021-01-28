@@ -44,6 +44,16 @@ function prepareLayer({
   colors,
   formatValue
 }: any) {
+  console.log(">>> prepareLayer")
+  console.log(feature)
+  console.log(layer)
+  console.log(data)
+  console.log(options)
+  console.log(limits)
+  console.log(colors)
+  console.log(formatValue)
+  console.log("-------")
+
   const value = getValueForFeature(feature, data, options.targetField);
   const valueFormatted = formatValue(value);
   const featureData = prepareFeatureProperties(feature, valueFormatted, data, options.targetField);
