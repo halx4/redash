@@ -7,19 +7,40 @@ import createReferenceCountingCache from "@/lib/referenceCountingCache";
 const cache = createReferenceCountingCache();
 
 export default function useLoadGeoJson(mapType) {
+  console.log("useLoadGeoJson(): w/ map type:")
+  console.log(mapType)
+  
   const [geoJson, setGeoJson] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    console.log("useLoadGeoJson mapType changed. reloading...")
+
     const mapUrl = get(visualizationsSettings, `choroplethAvailableMaps.${mapType}.url`, undefined);
 
+    console.log("mapUrl:")
+    console.log(mapUrl)
+
+    console.log("viz settings:")
+    console.log(visualizationsSettings)
+
     if (isString(mapUrl)) {
+      console.log("map url is string")
       setIsLoading(true);
       let cancelled = false;
 
       const promise = cache.get(mapUrl, () => axios.get(mapUrl).catch(() => null));
       promise.then(({ data }) => {
+
+        console.log("promise returned:")
+        console.log(data)
+        if (cancelled) {
+          console.log("promise request cancelled")
+        }
+
         if (!cancelled) {
+          console.log("promise request NOT cancelled")
+
           setGeoJson(isObject(data) ? data : null);
           setIsLoading(false);
         }

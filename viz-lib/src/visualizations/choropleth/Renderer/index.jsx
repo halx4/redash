@@ -20,6 +20,7 @@ export default function Renderer({ data, options, onOptionsChange }) {
 
   useEffect(() => {
     if (container) {
+      console.log("initializing choropleth");
       const _map = initChoropleth(container, (...args) => onBoundsChangeRef.current(...args));
       setMap(_map);
       return () => {
@@ -29,7 +30,11 @@ export default function Renderer({ data, options, onOptionsChange }) {
   }, [container]);
 
   useEffect(() => {
+    console.log("if (map)...")
     if (map) {
+      console.log("updating layers with geojson,options...")
+      console.log(geoJson)
+      console.log(options)
       map.updateLayers(
         geoJson,
         prepareData(data.rows, optionsWithoutBounds.keyColumn, optionsWithoutBounds.valueColumn),

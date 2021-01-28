@@ -119,12 +119,18 @@ export default function initChoropleth(container, onBoundsChange) {
   });
 
   function updateLayers(geoJson, data, options) {
+    console.log("update layers(...)")
+    
+    console.log("geoJson:")
+    console.log(geoJson)
+    
     _map.eachLayer(layer => _map.removeLayer(layer));
     _map.removeControl(_legend);
 
     if (!isObject(geoJson) || !isArray(geoJson.features)) {
       _choropleth = null;
       _map.setMaxBounds(null);
+      console.log("returning MARK1")
       return;
     }
 
@@ -136,6 +142,9 @@ export default function initChoropleth(container, onBoundsChange) {
         prepareLayer({ feature, layer, data, options, limits, colors, formatValue });
       },
     }).addTo(_map);
+
+    console.log("added to L.geoJSON")
+    console.log(geoJson)
 
     const mapBounds = _choropleth.getBounds();
     const bounds = validateBounds(options.bounds, mapBounds);
