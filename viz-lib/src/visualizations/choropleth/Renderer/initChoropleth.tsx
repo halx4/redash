@@ -44,15 +44,15 @@ function prepareLayer({
   colors,
   formatValue
 }: any) {
-  console.log(">>> prepareLayer")
-  console.log(feature)
-  console.log(layer)
-  console.log(data)
-  console.log(options)
-  console.log(limits)
-  console.log(colors)
-  console.log(formatValue)
-  console.log("-------")
+  // console.log(">>> prepareLayer")
+  // console.log(feature)
+  // console.log(layer)
+  // console.log(data)
+  // console.log(options)
+  // console.log(limits)
+  // console.log(colors)
+  // console.log(formatValue)
+  // console.log("-------")
 
   const value = getValueForFeature(feature, data, options.targetField);
   const valueFormatted = formatValue(value);
@@ -102,6 +102,7 @@ function validateBounds(bounds: any, fallbackBounds: any) {
 }
 
 export default function initChoropleth(container: any, onBoundsChange: any) {
+  console.log(">>> initializing choropleth")
   const _map = L.map(container, {
     center: [0.0, 0.0],
     zoom: 1,
