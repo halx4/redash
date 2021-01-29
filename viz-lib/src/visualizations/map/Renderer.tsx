@@ -29,6 +29,8 @@ export default function Renderer({
   const [map, setMap] = useState(null);
 
   useEffect(() => {
+    console.log("options1:")
+      console.log(options)
     if (container) {
       const _map = initMap(container);
       // @ts-expect-error ts-migrate(2345) FIXME: Argument of type '{ onBoundsChange: () => void; up... Remove this comment to see the full error message
@@ -40,6 +42,8 @@ export default function Renderer({
   }, [container]);
 
   useEffect(() => {
+    console.log("options2:")
+      console.log(options)
     if (map) {
       // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
       map.updateLayers(groups, optionsWithoutBounds);
@@ -47,6 +51,8 @@ export default function Renderer({
   }, [map, groups, optionsWithoutBounds]);
 
   useEffect(() => {
+    console.log("options3:")
+      console.log(options)
     if (map) {
       // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
       map.updateBounds(options.bounds);
@@ -55,6 +61,9 @@ export default function Renderer({
 
   useEffect(() => {
     if (map && onOptionsChange) {
+      console.log("options4:")
+      console.log(options)
+
       // @ts-expect-error ts-migrate(2531) FIXME: Object is possibly 'null'.
       map.onBoundsChange = (bounds: any) => {
         onOptionsChange(merge({}, options, { bounds }));
