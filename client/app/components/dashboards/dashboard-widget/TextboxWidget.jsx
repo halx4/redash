@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { markdown } from "markdown";
 import Menu from "antd/lib/menu";
 import HtmlContent from "@redash/viz/lib/components/HtmlContent";
 import TextboxDialog from "@/components/dashboards/TextboxDialog";
@@ -32,7 +31,7 @@ function TextboxWidget(props) {
 
   return (
     <Widget {...props} menuOptions={canEdit ? TextboxMenuOptions : null} className="widget-text">
-      <HtmlContent className="body-row-auto scrollbox t-body p-15 markdown">{markdown.toHTML(text || "")}</HtmlContent>
+      <HtmlContent className="body-row-auto scrollbox t-body p-15">{(text || "")}</HtmlContent>
     </Widget>
   );
 }
