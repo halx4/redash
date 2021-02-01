@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Menu from "antd/lib/menu";
-import HtmlContent from "@redash/viz/lib/components/HtmlContent";
+import HtmlContent from "@redash/viz/lib/components/UnsafeHtmlContent";
 import TextboxDialog from "@/components/dashboards/TextboxDialog";
 import Widget from "./Widget";
 
